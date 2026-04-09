@@ -1,35 +1,21 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "fullstack";
+// submit.php
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("localhost", "root", "", "fullstack");
+if ($conn->connect_error) die("Connection failed");
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$user = $_POST['username'];
+$pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$contact = $_POST['contact'];
+$email = $_POST['email'];
+$address = $_POST['address'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get data from form
-    $user = $_POST['username'];
-    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT); // Secure hashing
-    $contact = $_POST['contact'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
+$stmt = $conn->prepare("INSERT INTO new (username,password,contact,email,address) VALUES (?,?,?,?,?)");
+$stmt->bind_param("sssss", $user, $pass, $contact, $email, $address);
 
-    // SQL Query
-    $sql = "INSERT INTO new (username, password, contact, email, address) 
-            VALUES ('$user', '$pass', '$contact', '$email', '$address')";
+$stmt->execute();
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<h1>Registration successful!</h1>";
-        echo "<a href='index.html'>Go Back</a>";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
+header("Location: view.php");
+$stmt->close();
 $conn->close();
 ?>

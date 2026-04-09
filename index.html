@@ -1,48 +1,56 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validation Form</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Registration Form</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Create Account</h2>
-        <form id="registrationForm" action="submit.php" method="POST">
-            <div class="input-group">
-                <label>User Name</label>
-                <input type="text" id="username" name="username" placeholder="Min. 5 characters">
-                <span class="error" id="usernameError"></span>
-            </div>
 
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" id="password" name="password" placeholder="Min. 8 chars, 1 capital, 1 number">
-                <span class="error" id="passwordError"></span>
-            </div>
+<div class="form-container">
+    <h2>Create Account</h2>
 
-            <div class="input-group">
-                <label>Contact Number</label>
-                <input type="text" id="contact" name="contact" placeholder="10-digit mobile number">
-                <span class="error" id="contactError"></span>
-            </div>
+    <form id="registrationForm" action="submit.php" method="POST">
 
-            <div class="input-group">
-                <label>Email ID</label>
-                <input type="email" id="email" name="email" placeholder="example@mail.com">
-                <span class="error" id="emailError"></span>
-            </div>
+        <div class="input-group">
+            <label>User Name</label>
+            <input type="text" id="username" name="username">
+            <span class="error" id="usernameError"></span>
+        </div>
 
-            <div class="input-group">
-                <label>Address</label>
-                <textarea id="address" name="address" placeholder="Enter your full address"></textarea>
-                <span class="error" id="addressError"></span>
-            </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="password" name="password">
+            <span class="error" id="passwordError"></span>
+        </div>
 
-            <button type="submit">Register</button>
-        </form>
-    </div>
-    <script src="script.js"></script>
+        <div class="input-group">
+            <label>Contact Number</label>
+            <input type="text" id="contact" name="contact">
+            <span class="error" id="contactError"></span>
+        </div>
+
+        <div class="input-group">
+            <label>Email ID</label>
+            <input type="email" id="email" name="email">
+            <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="input-group">
+            <label>Address</label>
+            <textarea id="address" name="address"></textarea>
+            <span class="error" id="addressError"></span>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <br>
+    <a href="view.php">View Users</a>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
